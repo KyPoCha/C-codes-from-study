@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#define BUFFER_SIZE 100
 
 typedef struct item{
 	char name[BUFFER_SIZE];
@@ -13,6 +14,38 @@ typedef struct itemList{
 } itemList_t;
 
 void add(itemList_t * itemsList, char *name){
+	if(((*itemsList)).size == 0) {
+		(*itemsList).size = 1;
+		(*itemsList).items = (item_t **)calloc(1, sizeof((*itemsList).items));
+		(*itemsList).items[0] = (item_t *)calloc(1, sizeof(item_t));
+		memcpy((*itemsList).items[0]->name, name, strlen(name)+1);
+		(*itemsList).items[0]->count = 1;
+		return;
+	}
+	for(size_t i = 0; i<(*itemsList).size; i++){
+		if(strcmp((*itemsList).items[i]->name, name) == 0){
+			(*itemsList).items[i]->count++;
+			//printf("Hehe\n");
+			// printf("name was added: %s count: %d\n", name, (*itemsList).items[i]->count);
+			for(int j = i-1; j>=0; j--){
+				if((*itemsList).items[j]->count < (*itemsList).items[j+1]->count){
+					item_t * tmp;
+					tmp = (*itemsList).items[j];
+					(*itemsList).items[j] = (*itemsList).items[j+1];
+					(*itemsList).items[j+1] = tmp;
+				}
+			}
+			return;
+		}
+	}
+	// printf("added new: %s\n", name);
+	(*itemsList).size++;
+	(*itemsList).items = (item_t **)realloc((*itemsList).items, (*itemsList).size*sizeof((*itemsList).items));
+	(*itemsList).items[(*itemsList).size-1] = (item_t *)calloc(1, sizeof(item_t));
+	memcpy((*itemsList).items[(*itemsList).size-1]->name, name, strlen(name)+1);
+	(*itemsList).items[(*itemsList).size-1]->count = 1;
+}
+
 int main(void){
 	long tracked;
 	printf("Pocet sledovanych:\n");
