@@ -123,5 +123,22 @@ int main(void){
 				return 1;
 			}
 			a[strlen(a)]='\0';
+			// printf("name to add: %s\n", a);
+			add(&items,a);
+			//printf("%d", items.size);
+		}
+		if(funkce == '?'){
+			printf("Nejprodavanejsi zbozi: prodano %ld kusu\n",count(items,tracked));
+		}
+		if(funkce == '#'){
+			display(items,tracked);
+		}
+		if(scanf("%c", &funkce) != 1 || funkce != 10){
+			printf("Nespravny vstup.\n");
+			freeAll(items);
+      return 1;
+    }
+	}
+	freeAll(items);
 	return 0;
 }
