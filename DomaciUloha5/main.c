@@ -65,6 +65,27 @@ size_t count(itemList_t itemsList, size_t tracked){
   }
   return sum;
 }
+void display(itemList_t itemsList, size_t tracked){
+	size_t start, end; //sum = 0;
+  for(size_t i = 0; i<tracked && i < itemsList.size; i++){
+    start = i;
+    end = i;
+    for(i = i+1; i<itemsList.size; i++){
+      if(itemsList.items[i-1]->count != itemsList.items[i]->count) break;
+      else end = i;
+    }
+    i--;
+    if(start == end){
+			printf("%ld. %s, %ldx\n",start+1,itemsList.items[start]->name,itemsList.items[start]->count);
+		}
+    else{
+      for(unsigned long long j = start; j<=end; j++){
+				printf("%ld.-%ld. %s, %ldx\n",start+1,end+1,itemsList.items[j]->name,itemsList.items[j]->count);
+      }
+    }
+  }
+	printf("Nejprodavanejsi zbozi: prodano %ld kusu\n",count(itemsList,tracked));
+}
 int main(void){
 	long tracked;
 	printf("Pocet sledovanych:\n");
