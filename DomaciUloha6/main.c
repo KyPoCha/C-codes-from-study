@@ -139,6 +139,10 @@ int sameWords ( const char * a, const char * b )
       }
     }
 
+    freesplitwords(wordsLeva,&cntLeva);
+    freesplitwords(wordsPrava,&cntPrava);
+
+    return (Leva_have_all_Prava * Prava_have_all_Leva);
 }
 #ifndef __PROGTEST__
 int main ( int argc, char * argv [] )
