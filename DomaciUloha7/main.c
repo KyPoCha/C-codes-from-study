@@ -45,5 +45,8 @@ int main(void){
     }
   }
 
+  /* qsort() for sorting valid array of numbers with function cmp() */
+  qsort(array, k, sizeof(long),(int (*)(const void*, const void*))cmp);
+
   return 0;
 }
