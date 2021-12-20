@@ -86,6 +86,16 @@ void display(itemList_t itemsList, size_t tracked){
   }
 	printf("Nejprodavanejsi zbozi: prodano %ld kusu\n",count(itemsList,tracked));
 }
+
+void freeAll(itemList_t items){
+	if(items.size !=0){
+		for(size_t i = 0; i<items.size; i++){
+			free(items.items[i]);
+		}
+		free(items.items);
+	}
+}
+
 int main(void){
 	long tracked;
 	printf("Pocet sledovanych:\n");
@@ -102,12 +112,14 @@ int main(void){
 	scanf("%c", &funkce);
 	while((code = scanf("%c", &funkce) != EOF)){
 		if(code != 1 || (funkce != '+' && funkce != '?' && funkce != '#')){
+			freeAll(items);
 			printf("Nespravny vstup.\n");
 			return 1;
 		}
 		if(funkce == '+'){
 			if(scanf("%99s", a) != 1){
 				printf("Nespravny vstup.\n");
+				freeAll(items);
 				return 1;
 			}
 			a[strlen(a)]='\0';
