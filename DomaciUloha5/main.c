@@ -46,6 +46,25 @@ void add(itemList_t * itemsList, char *name){
 	(*itemsList).items[(*itemsList).size-1]->count = 1;
 }
 
+size_t count(itemList_t itemsList, size_t tracked){
+	size_t start, end, sum = 0;
+  for(size_t i = 0; i<tracked && i < itemsList.size; i++){
+    start = i;
+    end = i;
+    for(i = i+1; i<itemsList.size; i++){
+      if(itemsList.items[i-1]->count != itemsList.items[i]->count) break;
+      else end = i;
+    }
+    i--;
+    if(start == end) sum+=itemsList.items[start]->count;
+    else{
+      for(unsigned long long j = start; j<=end; j++){
+        sum+=itemsList.items[j]->count;
+      }
+    }
+  }
+  return sum;
+}
 int main(void){
 	long tracked;
 	printf("Pocet sledovanych:\n");
