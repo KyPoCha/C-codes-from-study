@@ -79,6 +79,66 @@ int sameWords ( const char * a, const char * b )
       word[s] = '\0';
       wordsPrava[cntPrava++] = (char*)realloc(word, sizeof(char)*(s+1));
     }
+
+    int Leva_have_all_Prava = 1;
+    for (int i = 0; i < cntLeva; i++) {
+      int same = 0;
+      int same_lf = 0;
+      for (int j = 0; j < cntPrava; j++) {
+        char chek_a = wordsLeva[i][0];
+        char chek_b = wordsPrava[j][0];
+        for(int h = 1; chek_a != 0 || chek_b != 0;h++){
+          if (chek_a == chek_b) {
+            same_lf = 1;
+          }
+          else {
+            same_lf = 0;
+            break;
+          }
+          chek_a = wordsLeva[i][h];
+          chek_b = wordsPrava[j][h];
+        }
+        if(same_lf){
+          same = 1;
+          break;
+        }
+      }
+      if(same == 0) {
+        Leva_have_all_Prava = 0;
+        break;
+      }
+    }
+
+
+    int Prava_have_all_Leva = 1;
+    for (int i = 0; i < cntPrava; i++) {
+      int same = 0;
+      int same_lf = 0;
+      for (int j = 0; j < cntLeva; j++) {
+        char chek_b = wordsPrava[i][0];
+        char chek_a = wordsLeva[j][0];
+        for(int h = 1; chek_a != 0 || chek_b != 0;h++){
+          if (chek_a == chek_b) {
+            same_lf = 1;
+          }
+          else{
+            same_lf = 0;
+            break;
+          }
+          chek_a = wordsLeva[j][h];
+          chek_b = wordsPrava[i][h];
+        }
+        if(same_lf){
+          same = 1;
+          break;
+        }
+      }
+      if(same == 0) {
+        Prava_have_all_Leva = 0;
+        break;
+      }
+    }
+
 }
 #ifndef __PROGTEST__
 int main ( int argc, char * argv [] )
