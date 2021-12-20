@@ -80,5 +80,6 @@ int main(void){
 
   /* print global variable "cnt" that counts variants */
   printf("Celkem: %ld\n",cnt);
+  free((void*)array);
   return 0;
 }
