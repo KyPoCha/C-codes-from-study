@@ -49,6 +49,31 @@ int main(void){
 
 			counter++;
 		}
+
+		if( funkce == '?' ){
+			if(scanf("%d",&to) != 1 || id > to || to < 0 || to > counter-1){
+				printf("Nespravny vstup.\n");
+				return 1;
+			}
+
+			long int c = 0;
+
+			for(int i = id ; i <= to; i++){
+				if(array_counter[array_new[i]] == 0){
+					c++;
+					array_counter[array_new[i]] = 1;
+				}
+			}
+
+			for( int i = 0; i < 100000; i ++){
+				array_counter[i] = 0;
+			}
+
+
+
+			printf("> %ld / %d\n",c,to-id+1);
+		}
+		scanf("%c", &funkce);
 	}
 
 	return 0;
