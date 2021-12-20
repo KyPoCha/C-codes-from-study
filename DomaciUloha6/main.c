@@ -6,6 +6,20 @@
 #include <assert.h>
 #endif /* __PROGTEST__ */
 #define getInLower(c) ((c >= 'a' && c <= 'z')? c : c - 'A' + 'a')
+#define isLetter(c) (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+
+
+void freesplitwords(char **words,int *cnt){
+  int i;
+  for(i = 0; i < *cnt; i++){
+    if (words[i] != NULL){
+      free(words[i]);
+      words[i] = NULL;
+      }
+  }
+  free(words);
+}
+
 int sameWords ( const char * a, const char * b )
 {
 
