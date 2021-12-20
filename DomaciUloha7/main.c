@@ -68,5 +68,17 @@ int main(void){
   qsort(array, k, sizeof(long),(int (*)(const void*, const void*))cmp);
 
   /* loop for printing variants of sorted arrays */
+  for (long i = 0; i < k; ++i) {
+        printf("%ld\n", *(array+i));
+        cnt++;
+        snprintf(charArray, MAX, "%ld", *(array+i));
+        printNumbers(array, i, k, charArray);
+        while(i < k-1 && *(array+i) == *(array+i+1)){
+          i+=1;
+        }
+    }
+
+  /* print global variable "cnt" that counts variants */
+  printf("Celkem: %ld\n",cnt);
   return 0;
 }
