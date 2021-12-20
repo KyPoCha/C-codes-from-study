@@ -22,7 +22,63 @@ void freesplitwords(char **words,int *cnt){
 
 int sameWords ( const char * a, const char * b )
 {
+    int new_word = 0;
 
+    char** wordsLeva = (char**)malloc(sizeof(char*)*1000000);
+    int s = 0, cntLeva = 0;
+    char* word;
+    new_word = 0;
+    for (size_t i = 0; a[i] != '\0'; i++) {
+      if (isLetter(a[i]) == 1)
+      {
+        if (new_word == 0)
+        {
+          word = (char*)malloc(1000000*sizeof(char));
+          new_word = 1;
+        }
+        word[s++] = getInLower(a[i]);
+      }
+      else if (new_word == 1){
+        word[s] = '\0';
+        word = (char*)realloc(word, sizeof(char)*(s+1));
+        wordsLeva[cntLeva++] = word;
+        new_word = 0;
+        s = 0;
+      }
+    }
+    if (new_word) {
+      word[s] = '\0';
+      wordsLeva[cntLeva++] = (char*)realloc(word, sizeof(char)*(s+1));
+    }
+
+
+
+    char** wordsPrava = (char**)malloc(sizeof(char*)*1000000);
+    int cntPrava = 0;
+    new_word = 0;
+    s = 0;
+    for (size_t i = 0; b[i] != '\0'; i++) {
+      if (isLetter(b[i]) == 1)
+      {
+        if (new_word == 0)
+        {
+          word = (char*)malloc(sizeof(char)*1000000);
+          new_word = 1;
+        }
+        word[s++] = getInLower(b[i]);
+      }
+      else if (new_word == 1){
+        word[s] = '\0';
+        word = (char*)realloc(word, sizeof(char)*(s+1));
+        wordsPrava[cntPrava++] = word;
+        new_word = 0;
+        s = 0;
+      }
+    }
+    if (new_word) {
+      word[s] = '\0';
+      wordsPrava[cntPrava++] = (char*)realloc(word, sizeof(char)*(s+1));
+    }
 }
 #ifndef __PROGTEST__
 int main ( int argc, char * argv [] )
