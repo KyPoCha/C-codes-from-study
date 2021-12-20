@@ -5,8 +5,10 @@
 #include <ctype.h>
 #include <assert.h>
 #endif /* __PROGTEST__ */
+#define getInLower(c) ((c >= 'a' && c <= 'z')? c : c - 'A' + 'a')
 int sameWords ( const char * a, const char * b )
 {
+
 }
 #ifndef __PROGTEST__
 int main ( int argc, char * argv [] )
