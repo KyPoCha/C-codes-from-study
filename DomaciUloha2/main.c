@@ -38,7 +38,16 @@ int main( void ){
 			t+=x;
 			t*=10;
 		}
+		else{
+			if(counter == 0) printf("%*lld\n", k, -b*((t+x)/b));
+			else printf("%*lld\n%*lld\n", k, t+x, k, -b*((t+x)/b));
+			t=(t+x-b*((t+x)/b))*10;
+			counter++;
+		}
 		k++;
 	}
+	if(counter == 0) printf("%*d\n%*lld zbytek\n", i+2, 0, i+2, t/10);
+	else printf("%*lld zbytek\n", k-1, t/10);
+
         return 0;
 }
