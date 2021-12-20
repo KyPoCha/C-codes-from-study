@@ -6,6 +6,25 @@
 #define MAX 10000
 /* global counter variable */
 long cnt = 0;
+
+/* recursive function of printing new sorted variants */
+void printNumbers(long *array, long k, long len, char * charArray){
+    char * chars = (char *)calloc(MAX, sizeof(chars));
+    memcpy(chars, charArray, MAX);
+    for(long i = k+1; i<len; i++){
+        printf("%s, %ld\n", charArray, *(array+i));
+        cnt++;
+        snprintf(chars + strlen(chars), MAX - strlen(chars), ", %ld", *(array+i));
+        printNumbers(array, i, len, chars);
+        while(i < len-1 && *(array+i) == *(array+i+1)){
+          i+=1;
+        }
+        memcpy(chars, charArray, MAX);
+    }
+    free(chars);
+    return;
+}
+
 /* comparing function for qsort() */
 long cmp(const void * a, const void * b){
   long arg1 = *(const long *)a;
@@ -48,5 +67,6 @@ int main(void){
   /* qsort() for sorting valid array of numbers with function cmp() */
   qsort(array, k, sizeof(long),(int (*)(const void*, const void*))cmp);
 
+  /* loop for printing variants of sorted arrays */
   return 0;
 }
