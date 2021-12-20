@@ -20,6 +20,8 @@ double twoWayDistance ( int fuelTotal, int maxLoad )
 	for(int i = 1; i <= odp; i++){
 		cesta += maxLoad / (double)(i);
 	}
+	double odp2 = fuelTotal / maxLoad - odp - 1;
+        cesta += (fuelTotal - maxLoad * odp)/(fuelTotal/maxLoad - odp2);
 
 	return cesta / 2.0;
 
