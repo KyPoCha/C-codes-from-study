@@ -11,3 +11,7 @@ int main(void){
 return 0;
 }
 
+int equal(double pa, double y){
+	double difference = fabs( pa - y);
+	return difference < DBL_EPSILON * 128;
+}
