@@ -6,6 +6,16 @@
 #define MAX 10000
 /* global counter variable */
 long cnt = 0;
+/* comparing function for qsort() */
+long cmp(const void * a, const void * b){
+  long arg1 = *(const long *)a;
+  long arg2 = *(const long *)b;
+
+  if(arg1 < arg2) return 1;
+  if(arg1 > arg2) return -1;
+  return 0;
+}
+
 int main(void){
 
   char charArray[MAX];
