@@ -6,8 +6,25 @@
 
 double twoWayDistance ( int fuelTotal, int maxLoad )
 {
+	fuelTotal = (double)fuelTotal;
+	maxLoad = (double)maxLoad;
+	double cesta = 0.0;
+
+	if(fuelTotal <= maxLoad){
+		return fuelTotal / 2.0;
+	}
+	if(maxLoad == 0){
+		return 0;
+	}
+	double odp = fuelTotal/maxLoad;
+	for(int i = 1; i <= odp; i++){
+		cesta += maxLoad / (double)(i);
+	}
+
+	return cesta / 2.0;
 
 }
+
 #ifndef __PROGTEST__
 int smallDiff ( double a, double b )
 {
