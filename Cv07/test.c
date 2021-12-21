@@ -16,6 +16,29 @@ void printArray ( int array[], int arrayLen){
 
 void rotateArray ( int array [], int arrayLen, int rotateBy )
 {
+	printArray(array, arrayLen);
+
+	int *parray = array;
+	int el1;
+	if(rotateBy >= 0){
+		el1 = parray[rotateBy - 1];
+	}
+
+	if(rotateBy < 0){
+		el1 = parray[1 + rotateBy];
+	}
+
+	int el2;
+
+	for(int i = 1; i < arrayLen; ++i){
+		el2 = parray[i];
+		parray[i] = el1;
+		el1 = el2;
+	}
+
+	parray[0] = el1;
+
+	printArray(parray, arrayLen);
 
 }
 
