@@ -4,6 +4,11 @@ int main(void){
         double x,y;
         char f,r;
         printf("Zadejte vzorec:\n");
+        scanf("%lf %c %lf %c",&x,&f,&y,&r);
+        if(r!='='){
+        printf("Nespravny vstup.\n");
+        }
+        else{
                 switch(f){
                         case '+':
                                 printf("%d\n",(int)(rint(x+y)));
