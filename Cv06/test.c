@@ -37,6 +37,21 @@ long long min( long long a, long long b, long long c)
 
 long long avg3 ( long long a, long long b, long long c )
 {
+  if(a != LLONG_MAX || b != LLONG_MAX || c!= LLONG_MAX){
+    long long prumer = (a+b+c) / 3;
+    if(a==b && b==c && a==c){
+	long long prumer = a;
+	return prumer;
+	}
+    if( min(a,b,c) != max(a,b,c) && ((long long)((min(a,b,c) + max(a,b,c))) > LLONG_MAX)){
+	return (long long)(max(a,b,c) - min(a,b,c) / 3);
+        }
+    if(min(a,b,c) == max(a,b,c)){
+        return (long long) (max(a,b,c));
+	}
+    return prumer;
+  }
+  else{
   return LLONG_MAX;
   }
 }
