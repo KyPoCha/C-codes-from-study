@@ -5,8 +5,24 @@
 #include <stdint.h>
 #endif /* __PROGTEST__ */
 
+long long max( long long a, long long b, long long c)
+{
+  if (a >= b && a >= c){
+        return a;
+  }
+  if (b >= a && b >= c){
+        return b;
+  }
+  if (c >= a && c >= b){
+        return c;
+  }
+  return 1;
+}
+
+
 long long avg3 ( long long a, long long b, long long c )
 {
+  }
 }
 
 #ifndef __PROGTEST__
