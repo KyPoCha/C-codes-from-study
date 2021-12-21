@@ -4,8 +4,19 @@
 #include <assert.h>
 #endif /* __PROGTEST__ */
 
+void printArray ( int array[], int arrayLen){
+
+	for(int i = 0; i < arrayLen - 1;i++){
+		printf("%d ",array[i]);
+	}
+	printf("%d\n",array[arrayLen - 1]);
+
+}
+
+
 void rotateArray ( int array [], int arrayLen, int rotateBy )
 {
+
 }
 
 #ifndef __PROGTEST__
