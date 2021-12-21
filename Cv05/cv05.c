@@ -1,4 +1,27 @@
 #include<stdio.h>
+int pocet,len;
+
+void printSachy(int a, int length ,int cislo){
+	for(int x=0; x < length * cislo ;x++){
+			if((a/cislo)%2==0){
+					if((x/cislo)%2==0){
+							printf(" ");
+					}
+					else{
+							printf("X");
+					}
+			}
+			else{
+					if((x/cislo)%2==0){
+							printf("X");
+					}
+					else{
+							printf(" ");
+					}
+			}
+	}
+}
+
 int main()
 {
     printf("Zadejte pocet poli:\n");
@@ -22,6 +45,9 @@ int main()
 
 
     for(int a=0; a < len*pocet;a++){
+        printf("|");
+				printSachy(a,len,pocet);
+        printf("|\n");
     }
 
 
