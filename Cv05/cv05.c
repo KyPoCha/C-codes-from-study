@@ -14,6 +14,22 @@ int main()
 
 
 
+    printf("+");
+    for(int i=1;i<=len*pocet;i++){
+        printf("-");
+    }
+    printf("+\n");
+
+
+    for(int a=0; a < len*pocet;a++){
+    }
+
+
+    printf("+");
+    for(int i=1;i<=len*pocet;i++){
+        printf("-");
+    }
+    printf("+\n");
 
 return 0;
 
