@@ -14,6 +14,38 @@ int main(void){
 		if(f == '.'){
 			printf("Nespravny vstup.\n");
 		}
+		else{
+				ms = ms2 - ms1;
+				s = s2 - s1;
+				m = m2 - m1;
+				h = h2 - h1;
+				if(ms<0){
+					s -= 1;
+					ms +=1000;
+				}
+				if(s<0){
+					m -= 1;
+					s +=60;
+				}
+				if(m<0){
+					h -=1;
+					m +=60;
+				}
+				if(h==1 && m!=0){
+					h = 0;
+				}
+
+
+				if(h>=10){
+					printf("Doba: %d:%.2d:%.2d,%.3d\n",h,m,s,ms);
+				}
+				else if(h<0){
+					printf("Nespravny vstup.\n");
+				}
+				else{
+					printf("Doba:  %d:%.2d:%.2d,%.3d\n",h,m,s,ms);
+				}
+			}
 	}
 	return 0;
 }
