@@ -15,6 +15,14 @@ int main(void){
 			printf("Nespravny vstup.\n");
 		}
 		else{
+
+			if(h1 > h2 || h1>23 || h2>23 || h1<0 || h2<0 || m1<0 || m2<0 || s1<0 || s2<0 || ms1<0 || ms2<0){
+			printf("Nespravny vstup.\n");
+			}
+			else if((h1==h2 && m2>m1) || m2==60 || m1==60 || s1==60 || s2==60 || ms1==1000 || ms2==1000){
+			printf("Nespravny vstup.\n");
+			}
+			else{
 				ms = ms2 - ms1;
 				s = s2 - s1;
 				m = m2 - m1;
@@ -46,6 +54,7 @@ int main(void){
 					printf("Doba:  %d:%.2d:%.2d,%.3d\n",h,m,s,ms);
 				}
 			}
+		}
 	}
 	return 0;
 }
