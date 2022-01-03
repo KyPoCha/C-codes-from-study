@@ -1,0 +1,20 @@
+image: gcc
+
+stages:
+  - build
+  - warnings
+
+build:
+    stage: build
+    script:
+      - echo "Starting code from '.c' file"
+      - g++ *.c -o run.out -Wall -pedantic -lm &> code.output || { cat code.output ; exit 101 ;}
+    artifacts:
+      paths:
+        - run.out
+        - code.output
+analyse build:
+  stage: warnings
+  script:
+    - chmod +x ./warnings.sh
+    - ./warnings.sh          
