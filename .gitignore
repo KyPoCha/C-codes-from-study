@@ -1,5 +1,5 @@
 *.o
-*.sh
+main.sh
 *.bin
 *.a
 *.txt
